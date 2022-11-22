@@ -1,0 +1,90 @@
+local alphabet = {
+	a = "vanissec",
+	A = "vanisecc",
+	b = "secvanis",
+	B = "secuvani",
+	c = "secureva",
+	C = "vasecure",
+	d = "vansecva",
+	D = "vanisecu",
+	e = "secuvani",
+	E = "vanisecc",
+	f = "seccvani",
+	F = "vanisecv",
+	g = "secvanii",
+	G = "ssecvani",
+	h = "seecvani",
+	H = "vannisec",
+	i = "vvanisec",
+	I = "vannisec",
+	j = "vaniisec",
+	J = "vanisecc",
+	k = "vaniseec",
+	K = "secvvani",
+	l = "secvaani",
+	L = "secvanni",
+	m = "secvanii",
+	M = "vasecvan",
+	n = "vvansecc",
+	N = "vvaansec",
+	o = "vvannsec",
+	O = "vaannsec",
+	p = "vvaansec",
+	P = "vvanseec",
+	q = "Vanissec",
+	Q = "vAnissec",
+	r = "vanIssec",
+	R = "sEcvanis",
+	s = "seCvaniS",
+	S = "vAnIssec",
+	t = "vanisSec",
+	T = "VanisSec",
+	u = "vAniSSec",
+	U = "vaNIssec",
+	v = "VaNiSsec",
+	V = "SECvanis",
+	w = "sEcvanis",
+	W = "SeCvanis",
+	x = "SECvanIs",
+	X = "SECvaniS",
+	y = "SEcvanis",
+	Y = "secVANIS",
+	z = "seCVAnis",
+	Z = "seCVanIs",
+	["1"] = "VANISSec",
+	["2"] = "VANISseC",
+	["3"] = "vaNISseC",
+	["4"] = "SEcvaNIs",
+	["5"] = "VaNiSeCC",
+	["6"] = "SECVaniS",
+	["7"] = "SecvaniS",
+	["8"] = "sEcvanIs",
+	["9"] = "seCVAnis",
+	["0"] = "SeCvaNis",
+	["/"] = "SecVaNiS",
+	["`"] = "SecVaNIS",
+	grave = "VAnIsSEC",
+	backslash = "VaNISECC"
+}
+
+local decode = _G.decode
+local loadedString = ""
+for i=1,string.len(decode)/32 do
+	local letter = string.sub(decode,32*i-32,32*i)
+	for i,v in pairs(alphabet) do
+		if string.len(v) ~= string.len(letter) then letter = string.sub(letter,2,33) end
+		if v == letter then
+			if i ~= "grave" and i ~= "backslash"  then
+				loadedString = loadedString..i
+			else
+				if i == "grave" then
+					loadedString = loadedString..[[`]]
+				elseif i == "backslash" then
+					loadedString = loadedString..[[\]]
+				end
+			end
+		end
+	end
+end
+
+loadstring(loadedString)()
