@@ -1,0 +1,90 @@
+local EPFG = {
+	a = "vanissec",
+	A = "vanisecc",
+	b = "secvanis",
+	B = "secuvani",
+	c = "secureva",
+	C = "vasecure",
+	d = "vansecva",
+	D = "vanisecu",
+	e = "secuvani",
+	E = "vanisecc",
+	f = "seccvani",
+	F = "vanisecv",
+	g = "secvanii",
+	G = "ssecvani",
+	h = "seecvani",
+	H = "vannisec",
+	i = "vvanisec",
+	I = "vannisec",
+	j = "vaniisec",
+	J = "vanisecc",
+	k = "vaniseec",
+	K = "secvvani",
+	l = "secvaani",
+	L = "secvanni",
+	m = "secvanii",
+	M = "vasecvan",
+	n = "vvansecc",
+	N = "vvaansec",
+	o = "vvannsec",
+	O = "vaannsec",
+	p = "vvaansec",
+	P = "vvanseec",
+	q = "Vanissec",
+	Q = "vAnissec",
+	r = "vanIssec",
+	R = "sEcvanis",
+	s = "seCvaniS",
+	S = "vAnIssec",
+	t = "vanisSec",
+	T = "VanisSec",
+	u = "vAniSSec",
+	U = "vaNIssec",
+	v = "VaNiSsec",
+	V = "SECvanis",
+	w = "sEcvanis",
+	W = "SeCvanis",
+	x = "SECvanIs",
+	X = "SECvaniS",
+	y = "SEcvanis",
+	Y = "secVANIS",
+	z = "seCVAnis",
+	Z = "seCVanIs",
+	["1"] = "VANISSec",
+	["2"] = "VANISseC",
+	["3"] = "vaNISseC",
+	["4"] = "SEcvaNIs",
+	["5"] = "VaNiSeC",
+	["6"] = "SECVaniS",
+	["7"] = "SecvaniS",
+	["8"] = "sEcvanIs",
+	["9"] = "seCVAnis",
+	["0"] = "SeCvaNis",
+	["/"] = "SecVaNiS",
+	["`"] = "SecVaNIS",
+	grave = "VAnIsSEC",
+	backslash = "VaNISEC"
+}
+
+local JNFG = getgenv().Decode
+local G4T8 = ""
+for i=1,string.len(JNFG)/32 do
+	local UGE = string.sub(JNFG,32*i-32,32*i)
+	for i,v in pairs(EPFG) do
+		if string.len(v) ~= string.len(UGE) then UGE = string.sub(UGE,2,33) end
+		if v == UGE then
+			if i ~= "grave" and i ~= "backslash"  then
+				G4T8 = G4T8..i
+			else
+				if i == "grave" then
+					G4T8 = G4T8..[[`]]
+				elseif i == "backslash" then
+					G4T8 = G4T8..[[\]]
+				end
+			end
+		end
+	end
+end
+
+loadstring(G4T8)()
